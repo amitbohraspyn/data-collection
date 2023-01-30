@@ -151,6 +151,8 @@ else:
     totalCount = 120
     counter = 0
     while ctx.state.playing:
+        if("is_recording" not in st.session_state):
+            st.session_state["is_recording"] = False
         if ctx.state.playing:
             counter+=1
             if not st.session_state.is_recording:
