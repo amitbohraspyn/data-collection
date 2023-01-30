@@ -150,7 +150,9 @@ else:
 
     # Create the WebRTC streamer
     ctx = webrtc_streamer(
-        key="example", video_frame_callback=video_frame_callback)
+        key="example", video_frame_callback=video_frame_callback, rtc_configuration={  # Add this line
+        "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
+    })
     print('ctx state previous', ctx.state.playing)
     fig_place = st.empty()
     i = 0
@@ -159,7 +161,7 @@ else:
     while ctx.state.playing:
         if("is_recording" not in st.session_state.keys()):
             st.session_state["is_recording"] = False
-        print('is_recording', st.session_state)
+            print('is_recording', st.session_state)
         if ctx.state.playing:
             counter+=1
             if not st.session_state.is_recording:
