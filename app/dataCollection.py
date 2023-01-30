@@ -33,8 +33,11 @@ def uploadToGCP(file, class_label, mode):
     folder_name = class_label
     file_name = f"{int(time.time())}_{class_label}_video_{mode}.mp4"
     creds = service_account.Credentials.from_service_account_info(
-    st.secrets["gcp_service_account"]
+    st.secrets["gcp.service_account"]
 )
+    # path_to_credentials = "app/mlServiceAccountKey.json"
+    # creds = service_account.Credentials.from_service_account_file(
+    #     path_to_credentials)
     client = storage.Client(credentials=creds)
     bucket = client.get_bucket(bucket_name)
     blob = bucket.blob(f"activity_recognition/{folder_name}/{file_name}")
