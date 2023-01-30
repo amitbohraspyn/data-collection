@@ -13,7 +13,6 @@ from streamlit_webrtc import webrtc_streamer
 
 # lock = threading.Lock()
 
-import cv2
 
 def get_video_resolution(file):
     with tempfile.NamedTemporaryFile(suffix=".mp4") as temp:
