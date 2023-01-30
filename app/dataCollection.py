@@ -153,7 +153,7 @@ else:
     while ctx.state.playing:
         if("is_recording" not in st.session_state.keys()):
             st.session_state["is_recording"] = False
-            print('is_recording', st.session_state)
+        print('is_recording', st.session_state)
         if ctx.state.playing:
             counter+=1
             if not st.session_state.is_recording:
