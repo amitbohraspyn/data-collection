@@ -149,9 +149,10 @@ else:
 
     # Create the WebRTC streamer
     ctx = webrtc_streamer(
-        key="example", video_frame_callback=video_frame_callback, rtc_configuration={  # Add this line
-        "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
-    })
+        key="example", video_frame_callback=video_frame_callback, rtc_configuration={
+        "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}, ]
+    }, media_stream_constraints={"video": True, "audio": False},
+    async_processing=False,)
     print('ctx state previous', ctx.state.playing)
     fig_place = st.empty()
     i = 0
