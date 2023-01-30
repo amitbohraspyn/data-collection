@@ -12,7 +12,8 @@ from google.oauth2 import service_account
 from streamlit_webrtc import webrtc_streamer
 
 # lock = threading.Lock()
-
+if("is_recording" not in st.session_state):
+    st.session_state["is_recording"] = False
 
 def get_video_resolution(file):
     with tempfile.NamedTemporaryFile(suffix=".mp4") as temp:
@@ -94,7 +95,7 @@ class_options = {
 }
 
 st.set_page_config(page_title="Activity Recognition Dataset Collection",
-                   page_icon=":guardsman:", layout="centered", session_state_enabled=True)
+                   page_icon=":guardsman:", layout="centered")
 st.write(
     '<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 st.markdown(
@@ -144,9 +145,6 @@ else:
     # Create the WebRTC streamer
     ctx = webrtc_streamer(
         key="example", video_frame_callback=video_frame_callback)
-
-    if("is_recording" not in st.session_state):
-        st.session_state["is_recording"] = False
     print('ctx state previous', ctx.state.playing)
     fig_place = st.empty()
     i = 0
