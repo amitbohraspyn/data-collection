@@ -94,7 +94,7 @@ class_options = {
 }
 
 st.set_page_config(page_title="Activity Recognition Dataset Collection",
-                   page_icon=":guardsman:", layout="centered")
+                   page_icon=":guardsman:", layout="centered", session_state_enabled=True)
 st.write(
     '<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 st.markdown(
