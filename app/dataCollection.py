@@ -155,6 +155,7 @@ else:
             counter+=1
             if("is_recording" not in st.session_state):
                 st.session_state["is_recording"] = False
+                print('is_recording', st.session_state)
             if not st.session_state.is_recording:
                 # Create the output file and add the video stream
                 st.session_state.video_file = BytesIO()
@@ -168,6 +169,7 @@ else:
                 print("Recording started")
         if("is_recording" not in st.session_state):
             st.session_state["is_recording"] = False
+            print('is_recording', st.session_state)
         if st.session_state.is_recording:
             with lock:
                 img = img_container["img"]
