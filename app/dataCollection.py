@@ -151,10 +151,10 @@ else:
     totalCount = 120
     counter = 0
     while ctx.state.playing:
-        if("is_recording" not in st.session_state):
-            st.session_state["is_recording"] = False
         if ctx.state.playing:
             counter+=1
+            if("is_recording" not in st.session_state):
+                st.session_state["is_recording"] = False
             if not st.session_state.is_recording:
                 # Create the output file and add the video stream
                 st.session_state.video_file = BytesIO()
@@ -166,6 +166,8 @@ else:
                 st.session_state.video_stream.height = height
                 st.session_state.is_recording = True
                 print("Recording started")
+        if("is_recording" not in st.session_state):
+            st.session_state["is_recording"] = False
         if st.session_state.is_recording:
             with lock:
                 img = img_container["img"]
@@ -182,6 +184,8 @@ else:
                 if packet:
                     st.session_state.writer.mux(packet)
     else:
+        if("is_recording" not in st.session_state):
+            st.session_state["is_recording"] = False
         if st.session_state.is_recording:
             packet = st.session_state.video_stream.encode(None)
             st.session_state.writer.mux(packet)
