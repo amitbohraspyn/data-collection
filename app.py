@@ -33,15 +33,14 @@ def uploadToGCP(file, class_label, mode):
     class_label = str(class_label)
     folder_name = class_label
     file_name = f"{int(time.time())}_{class_label}_video_{mode}.mp4"
-#     creds = service_account.Credentials.from_service_account_info(
-#     st.secrets["gcp_service_account"]
-# )
+    creds = service_account.Credentials.from_service_account_info(
+    st.secrets["gcp_service_account"])
     # path_to_credentials = "app/mlServiceAccountKey.json"
     # creds = service_account.Credentials.from_service_account_file(
     #     path_to_credentials)
-    creds = None
-    if 'GOOGLE_APPLICATION_CREDENTIALS' in os.environ:
-        creds = os.environ['GOOGLE_APPLICATION_CREDENTIALS']
+    # creds = None
+    # if 'GOOGLE_APPLICATION_CREDENTIALS' in os.environ:
+    #     creds = os.environ['GOOGLE_APPLICATION_CREDENTIALS']
 
     client = storage.Client.from_service_account_json(creds)
     client = storage.Client(credentials=creds)
