@@ -89,12 +89,6 @@ six==1.16.0
 smmap==5.0.0
 streamlit==1.17.0
 streamlit-webrtc==0.44.2
-tensorboard==2.11.2
-tensorboard-data-server==0.6.1
-tensorboard-plugin-wit==1.8.1
-tensorflow-estimator==2.11.0
-tensorflow-macos==2.11.0
-tensorflow-metal==0.7.0
 termcolor==2.2.0
 threadpoolctl==3.1.0
 tifffile==2023.1.23.1
